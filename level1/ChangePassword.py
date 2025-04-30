@@ -26,7 +26,7 @@ class ChangePassword(unittest.TestCase):
         # AppDynamics will automatically override this web driver
         # as documented in https://docs.appdynamics.com/display/PRO44/Write+Your+First+Script
         self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(30)
+        self.driver.implicitly_wait(10)
         self.base_url = "https://www.google.com/"
         self.verificationErrors = []
         self.accept_next_alert = True
@@ -78,4 +78,5 @@ class ChangePassword(unittest.TestCase):
         self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
-    unittest.main()
+    from helper import run_tests
+    run_tests(ChangePassword)
