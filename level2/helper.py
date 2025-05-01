@@ -14,6 +14,8 @@ def run_tests(test):
                 d[key] = str(d[key]).split("|") if d[key] else []
 
     fields = pd.read_csv(f"level2/fields/{test.__name__}.csv", na_values=[""]).replace({nan: None}).to_dict(orient='records')[0]
+    if "buttons_nums" in fields:
+        fields['buttons_nums'] = [int(i) for i in str(fields['buttons_nums']).split("|") if i]
                 
     # Create a test suite
     suite = unittest.TestSuite()

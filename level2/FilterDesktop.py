@@ -27,6 +27,7 @@ class FilterDesktop(unittest.TestCase):
         data = self.data
         fields = self.fields
         arrays = list(data.keys())[2:7]
+        nums = fields['buttons_nums']
         driver.get(fields['url'])
         if data['price_min']:
             driver.find_element_by_xpath(fields['price_min_xpath']).clear()
@@ -34,11 +35,11 @@ class FilterDesktop(unittest.TestCase):
         if data['price_max']:
             driver.find_element_by_xpath(fields['price_max_xpath']).clear()
             driver.find_element_by_xpath(fields['price_max_xpath']).send_keys(str(data['price_max']))
-        for i in range(1, len(arrays) + 1):
-            num = str(i if i < 3 else i + 1)
-            for j in data[arrays[i - 1]]:
+        for i in range(len(nums)):
+            num = nums[i]
+            for j in data[arrays[i]]:
                 res = "" if j == 1 else f"[{str(j)}]"
-                driver.find_element_by_xpath(f"//div[@id='mz-filter-panel-0-{num}']/div/div{res}/div/label").click()
+                driver.find_element_by_xpath(fields['buttons_xpath'].format(num=num, res=res)).click()
         if data['search']:
             driver.find_element_by_xpath(fields['search_xpath']).clear()
             driver.find_element_by_xpath(fields['search_xpath']).send_keys(str(data['search']))

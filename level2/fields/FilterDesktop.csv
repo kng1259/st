@@ -1,2 +1,2 @@
-url,price_min_xpath,price_max_xpath,search_xpath
-https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=20,//div[@id='mz-filter-panel-0-0']/div/div[2]/input,//div[@id='mz-filter-panel-0-0']/div/div[2]/input[2],//div[@id='mz-filter-panel-0-3']/div/input
+url,price_min_xpath,price_max_xpath,search_xpath,buttons_xpath,buttons_nums
+https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=20,//div[@id='mz-filter-panel-0-0']/div/div[2]/input,//div[@id='mz-filter-panel-0-0']/div/div[2]/input[2],//div[@id='mz-filter-panel-0-3']/div/input,//div[@id='mz-filter-panel-0-{num}']/div/div{res}/div/label,1|2|4|5|6
